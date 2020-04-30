@@ -18,9 +18,9 @@ api = Api(app)
 class Classifier(Resource):
     def post(self):
         json_data = request.get_json()
-        q_class = cq.classify(json_data["question"],"train_5500.model",en_nlp)
+        q_class = cq.classify(json_data["question"],"server/train_5500.model",en_nlp)
 
-        output_message = {"class":str(q_class)}
+        output_message = {"class":str(q_class[0])}
         return output_message, 201
 
 api.add_resource(Classifier, '/')

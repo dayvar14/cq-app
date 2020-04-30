@@ -11,6 +11,7 @@ After installing anaconda, we need to create a anaconda environment
 
 ```
 conda create -n cq-env python=3.8.2 anaconda
+conda update conda
 ```
 
 ### Installing Dependencies
@@ -22,20 +23,8 @@ conda activate cq-env
 
 Download dependencies pandas, flask, flask-restful, scikit-learn, sparse, and spacy
 ```
-#Pandas
-conda install pandas
-
-#Flask
-conda install -c anaconda flask 
-
 #Flask Restful
 conda install -c conda-forge flask-restful
-
-#Scikit Learn
-conda install -c anaconda scikit-learn
-
-#Sparse
-conda install -c conda-forge sparse
 
 #Spacy
 conda install -c conda-forge spacy
@@ -45,8 +34,22 @@ conda install -c conda-forge spacy
 In the terminal, download language model using spacy
 
 ```
-python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_md
 ```
 
 ### Running the application
-To runn
+To startup server run the sh file 'start_server.sh'
+```
+./start_server.sh
+```
+
+Once finished, the terminal will show the default address
+
+### Running the test client
+To test the server you can run the sh file 'start_client.sh'\
+The script accepts one argument enclosed by quotations
+```
+    ./start_client.sh "Who is Don Cornero?"
+    #Returns
+    {class:"
+```

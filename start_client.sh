@@ -1,3 +1,2 @@
 #!/bin/bash
-
-python client/test_client.sh
+python client/test_client.py $1
