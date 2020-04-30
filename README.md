@@ -49,7 +49,10 @@ Once finished, the terminal will show the default address
 To test the server you can run the sh file 'start_client.sh'\
 The script accepts one argument enclosed by quotations
 ```
-    ./start_client.sh "Who is Don Cornero?"
-    #Returns
-    {class:"
+./start_client.sh "Who is Don Cornero?"
+#Prints
+Message sent: { 'question' : 'Who is Don Cornero'}
+Message recieved: { 'class' : 'HUM'} 
 ```
+
+Classification can be decoded using the Question Classification Taxonomy https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html
