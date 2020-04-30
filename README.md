@@ -40,7 +40,7 @@ python -m spacy download en_core_web_md
 ### Running the application
 To startup server run the sh file 'start_server.sh'
 ```
-./start_server.sh
+sh start_server.sh
 ```
 
 Once finished, the terminal will show the default address
@@ -49,7 +49,7 @@ Once finished, the terminal will show the default address
 To test the server you can run the sh file 'start_client.sh'\
 The script accepts one argument enclosed by quotations
 ```
-./start_client.sh "Who is Don Cornero?"
+sh start_client.sh "Who is Don Cornero?"
 #Prints
 Message sent: { 'question' : 'Who is Don Cornero'}
 Message recieved: { 'class' : 'HUM'} 
