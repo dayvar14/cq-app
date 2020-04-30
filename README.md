@@ -62,5 +62,60 @@ Classification can be decoded using the Question Classification Taxonomy https:/
     #Input
     sh start_client.sh "How much does a Macbook Air cost?"
     #Output
-    Message set: {
+    Message sent: {'question':'How much does a Macbook Air cost?'}
+    Message recieved: {'class':'NUM'}
+
+    #Input
+    sh start_client.sh "Where can i go for a drink around here?"
+    #Output
+    Message sent: {'question':'Where can i go for a drink around here?'}
+    Message recieved: {'class':'LOC'}
+
+    #Input
+    sh start_client.sh "Who is Don Cornero?"
+    #Output
+    Message sent: {'question':'Who is Don Cornero?'}
+    Message recieved: {'class':'HUM'}
+
+    #Input
+    sh start_client.sh "How are you feeling today?"
+    #Output
+    Message sent: {'question':'How are you feeling today?'}
+    Message recieved: {'class':'DESC'}
+    
+    #Input
+    sh start_client.sh "What does a cake recipe consist of?"
+    #Output
+    Message sent: {'question':'What does a cake recipe consist of?'}
+    Message recieved: {'class':'ENTY'}
+
+    #Input
+    sh start_client.sh "When does the movie release in theaters?"
+    #Output
+    Message sent: {'question':'When does the movie release in theaters?'}
+    Message recieved: {'class':'NUM'}
+
+    #Input
+    sh start_client.sh "Where is the Sears Tower?"
+    #Output
+    Message sent: {'question':'Where is the Sears Tower?'}
+    Message recieved: {'class':'LOC'}
+
+    #Input
+    sh start_client.sh "Who is Iron Man?"
+    #Output
+    Message sent: {'question':'Who is Iron Man?'}
+    Message recieved: {'class':'HUM'}
+
+    #Input
+    sh start_client.sh "What is the powerhouse of the cell?"
+    #Output
+    Message sent: {'question':'What is the powerhouse of the cell?'}
+    Message recieved: {'class':'DESC'}
+    
+    #Input
+    sh start_client.sh "What inspired Micheal Jordan?"
+    #Output
+    Message sent: {'question':'What inspired Micheal Jordan?'}
+    Message recieved: {'class':'ENTY'}
 ```
