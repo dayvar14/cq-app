@@ -23,9 +23,9 @@ def main():
     data = {'question': question }
 
     r = requests.post("http://127.0.0.1:5000", json=data)
-    print("Message sent: {}".format(r.text))
+    print("Message sent: {}".format(data))
 
-    print("Message recieved: {}".format(data))
+    print("Message recieved: {}".format(r.text))
 
 
 if __name__ == '__main__':

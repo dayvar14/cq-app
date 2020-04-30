@@ -56,3 +56,11 @@ Message recieved: { 'class' : 'HUM'}
 ```
 
 Classification can be decoded using the Question Classification Taxonomy https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html
+
+### Test Cases
+```
+    #Input
+    sh start_client.sh "How much does a Macbook Air cost?"
+    #Output
+    Message set: {
+```
