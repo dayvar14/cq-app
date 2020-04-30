@@ -21,7 +21,7 @@ Activate the newly created environment to install the required dependencies
 conda activate cq-env
 ```
 
-Download dependencies pandas, flask, flask-restful, scikit-learn, sparse, and spacy
+Download dependencies flask-restful, and spacy
 ```
 #Flask Restful
 conda install -c conda-forge flask-restful
