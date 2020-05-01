@@ -32,9 +32,10 @@ class Classifier(Resource):
 
     def post(self):
         json_data = request.get_json()
-        q_class = cq.classify(json_data["question"],model_path,en_nlp)
+        c_class,f_class = cq.classify(json_data["question"],model_path,en_nlp)
 
-        output_message = {"class":str(q_class[0])}
+        output_message = {"c_class":str(c_class),
+                          "f_class":str(f_class)}
         return output_message, 201
 
 api.add_resource(Classifier, '/')

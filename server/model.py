@@ -27,7 +27,7 @@ def read_input_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             line_arr = line.split()
-            fine_class,coarse_class = line_arr[0].split(":")
+            coarse_class,fine_class = line_arr[0].split(":")
             question = " ".join(line_arr[1:])
             question_list.append({"question":question,"fine":fine_class,"coarse":coarse_class})
         file.close()
@@ -86,7 +86,8 @@ def process_question(question_obj, en_nlp):
 
     classifier = {
         "question": question_obj["question"],
-        "class": question_obj["coarse"],
+        "f_class": question_obj["fine"],
+        "c_class": question_obj["coarse"],
         "wh_pos": wh_pos,
         "wh_word": wh_word,
         "wh_bi_gram": wh_bi_gram,

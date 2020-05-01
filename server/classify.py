@@ -123,10 +123,11 @@ def pre_process_model(model):
     :param model: pandas question model
     :return: the popped class column from the pandas question model
     """
-    class_col = model.pop("class")
+    c_class_col = model.pop("c_class")
+    f_class_col = model.pop("f_class")
     model.pop("question")
     model.pop("wh_bi_gram")
-    return class_col
+    return c_class_col,f_class_col
 
 
 def classify(question, model_path, en_nlp):
@@ -138,11 +139,12 @@ def classify(question, model_path, en_nlp):
     :return: returns the predicted classification for the question provided
     """
     data_model = []
-    class_col = []
+    c_class_col = []
+    f_class_col = []
 
     with open(model_path) as input_file:
         data_model = pandas.read_json(input_file)
-        class_col = pre_process_model(data_model)
+        c_class_col,f_class_col = pre_process_model(data_model)
         input_file.close()
 
     training_data = pandas.get_dummies(data_model)
@@ -158,9 +160,10 @@ def classify(question, model_path, en_nlp):
 
     training_data, pred_data = transform_data_matrix(training_data, pred_data)
 
-    svm = support_vector_machine(training_data, class_col, pred_data)
+    c_class = support_vector_machine(training_data, c_class_col, pred_data)
+    f_class = support_vector_machine(training_data, c_class_col, pred_data)
 
-    return svm
+    return c_class[0],f_class[0]
 
 
 def check_arguments():
