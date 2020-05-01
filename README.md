@@ -43,7 +43,9 @@ Download one of training sets to create a training question model for our applic
 ```
 python model.py train_5500.label train_5500.model
 ```
-This model is used later as an argument to start the server with main.py
+
+One model was created beforehand called "train_5500.model". This model is used later as an argument to start the server
+with main.py
 
 ### Running the application
 To startup server run the sh file 'start_server.sh'
