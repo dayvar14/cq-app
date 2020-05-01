@@ -61,7 +61,7 @@ def support_vector_machine(train_data, class_col, predict_data):
     :param train_data: vector model for the training question data
     :param class_col: columns that includes the classes of all the questions in the training question data vector model
     :param predict_data: vector model for the question to predict
-    :return:
+    :return: returns the predicted classification
     """
     linsvc = LinearSVC()
     linsvc.fit(train_data, class_col)
