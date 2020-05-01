@@ -161,7 +161,7 @@ def classify(question, model_path, en_nlp):
     training_data, pred_data = transform_data_matrix(training_data, pred_data)
 
     c_class = support_vector_machine(training_data, c_class_col, pred_data)
-    f_class = support_vector_machine(training_data, c_class_col, pred_data)
+    f_class = support_vector_machine(training_data, f_class_col, pred_data)
 
     return c_class[0],f_class[0]
 

@@ -38,7 +38,7 @@ python -m spacy download en_core_web_md
 ```
 
 ### Creating the training model
-This application uses one of many question training sets provided by the [University of Pennsylvania](https://cogcomp.seas.upenn.edu/Data/QA/QC/)
+This application uses one of many question training sets provided by the [University of Pennsylvania](https://cogcomp.seas.upenn.edu/Data/QA/QC/).
 Download one of training sets to create a training question model for our application.
 ```
 python model.py train_5500.label train_5500.model
@@ -56,7 +56,7 @@ Once finished, the terminal will show the default address
 Alternatively The server can be started by running the python file main.py.
 You just have to include the path of your trained model file.
 ```
-python main.py "train_5000.model"
+python main.py "train_5500.model"
 ```
 
 ### Running the test client
