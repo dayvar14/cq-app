@@ -74,7 +74,9 @@ Alternatively The client can be started by running the python file test_client.p
 python test_client.py "Who is Don Cornero?"
 ```
 
-Classification can be decoded using the [Question Classification Taxonomy](https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html)
+Classification can be decoded using the [Question Classification Taxonomy](https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html).
+The attribute "c_class" represents the broader classification of the question, while "f_class" represents the finer category within the coarse classification
+
 
 ### Test Cases
 ```
