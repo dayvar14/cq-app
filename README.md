@@ -5,7 +5,7 @@ This project's goal is to create a server that can accept a questions and send b
 the sent question.
 
 ### Get started with Anaconda
-To install anaconda go to https://docs.anaconda.com/anaconda/install/
+To learn more about installing anaconda, go [here](https://docs.anaconda.com/anaconda/install/)
 
 After installing anaconda, we need to create a anaconda environment
 
@@ -37,6 +37,9 @@ In the terminal, download language model using spacy
 python -m spacy download en_core_web_md
 ```
 
+### Creating the training model
+This application uses one of many training models pr
+
 ### Running the application
 To startup server run the sh file 'start_server.sh'
 ```
@@ -44,6 +47,12 @@ sh start_server.sh
 ```
 
 Once finished, the terminal will show the default address
+
+Alternatively The server can be started by running the python file main.py.
+You just have to include the path of your trained model file.
+```
+python main.py "train_5000.model"
+```
 
 ### Running the test client
 To test the server you can run the sh file 'start_client.sh'\
@@ -55,7 +64,12 @@ Message sent: { 'question' : 'Who is Don Cornero'}
 Message recieved: { 'class' : 'HUM'} 
 ```
 
-Classification can be decoded using the Question Classification Taxonomy https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html
+Alternatively The client can be started by running the python file test_client.py.
+```
+python test_client.py "Who is Don Cornero?"
+```
+
+Classification can be decoded using the [Question Classification Taxonomy](https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html)
 
 ### Test Cases
 ```
