@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+
+"""
+    classify.py:
+        The function of this script is classify a question using a Support vector machine to find a model to
+        best split the training data
+"""
+
+__author__ = "Daniel Ayvar"
+
 from sklearn.svm import LinearSVC
 import pandas
 import spacy
@@ -6,54 +16,80 @@ import sys
 from scipy.sparse import csr_matrix
 
 
-def transform_data_matrix(X_train, X_predict):
-    X_train_columns = list(X_train.columns)
-    X_predict_columns = list(X_predict.columns)
+def transform_data_matrix(train_data, predict_data):
+    """
+    Adds the missing columns to the train_data and predict data to prepare them for the SVM. Then returns the new
+    vector models
+    :param train_data: vector model of all questions
+    :param predict_data: vector model of the question to be classified
+    :return:
+    """
+    #Adds all miss
+    train_columns = list(train_data.columns)
+    predict_columns = list(predict_data.columns)
 
-    X_trans_columns = list(set(X_train_columns + X_predict_columns))
-    # print(X_trans_columns, len(X_trans_columns))
+    trans_columns = list(set(train_columns + predict_columns))
 
     trans_data_train = {}
 
-    for col in X_trans_columns:
-        if col not in X_train:
-            trans_data_train[col] = [0 for i in range(len(X_train.index))]
+    for col in trans_columns:
+        if col not in train_data:
+            trans_data_train[col] = [0 for i in range(len(train_data.index))]
         else:
-            trans_data_train[col] = list(X_train[col])
+            trans_data_train[col] = list(train_data[col])
 
-    XT_train = pandas.DataFrame(trans_data_train)
-    XT_train = csr_matrix(XT_train)
+    t_train = pandas.DataFrame(trans_data_train)
+    t_train = csr_matrix(t_train)
     trans_data_predict = {}
 
-    for col in X_trans_columns:
-        if col not in X_predict:
+    for col in trans_columns:
+        if col not in predict_data:
             trans_data_predict[col] = 0
         else:
-            trans_data_predict[col] = list(X_predict[col])  # KeyError
+            trans_data_predict[col] = list(predict_data[col])
 
-    XT_predict = pandas.DataFrame(trans_data_predict)
-    XT_predict = csr_matrix(XT_predict)
+    t_predict = pandas.DataFrame(trans_data_predict)
+    t_predict = csr_matrix(t_predict)
 
-    return XT_train, XT_predict
+    return t_train, t_predict
 
 
-def support_vector_machine(X_train, y, X_predict):
+def support_vector_machine(train_data, class_col, predict_data):
+    """
+    Trains a Linear support vector machine to attribute the vector model for the questions to the classification
+    of those questions. It then predicts the class of the question to predict using it's vector model
+    :param train_data: vector model for the training question data
+    :param class_col: columns that includes the classes of all the questions in the training question data vector model
+    :param predict_data: vector model for the question to predict
+    :return:
+    """
     linsvc = LinearSVC()
-    linsvc.fit(X_train, y)
-    prediction = linsvc.predict(X_predict)
+    linsvc.fit(train_data, class_col)
+    prediction = linsvc.predict(predict_data)
     return prediction
 
 
-def predict_question(question, en_nlp):
+def process_question(question, en_nlp):
+    """
+    Processes question and retrieves the question word (WHO,HOW,WHEN,WHERE), it's bigram, along with their
+    POS tags
+    :param question: raw question text to process
+    :param en_nlp: english language model from spacey
+    :return: returns a processed question within a dictionary
+    """
     en_doc = en_nlp(u'' + question)
     sents = list(en_doc.sents)
     sent = sents[0]
 
-    ''' Re Write this'''
+    #Bigram of word
     wh_bi_gram = []
+
     root_token = ""
+    #Question Non-terminal
     wh_pos = ""
+    #Question Neighbor Non-terminal
     wh_nbor_pos = ""
+    #Question word
     wh_word = ""
 
     for sent in sents:
@@ -81,6 +117,12 @@ def predict_question(question, en_nlp):
 
 
 def pre_process_model(model):
+    """
+    Removes unnecessary columns from the pandas question model
+
+    :param model: pandas question model
+    :return: the popped class column from the pandas question model
+    """
     class_col = model.pop("class")
     model.pop("question")
     model.pop("wh_bi_gram")
@@ -88,6 +130,13 @@ def pre_process_model(model):
 
 
 def classify(question, model_path, en_nlp):
+    """
+    Creates a vector model of the training data along with the question to predict
+    :param question: raw text to process as a question
+    :param model_path: path to the question json model created by model.py
+    :param en_nlp: english language model from spacy
+    :return: returns the predicted classification for the question provided
+    """
     data_model = []
     class_col = []
 
@@ -98,7 +147,7 @@ def classify(question, model_path, en_nlp):
 
     training_data = pandas.get_dummies(data_model)
     en_doc = en_nlp(u'' + question)
-    classifier = predict_question(question, en_nlp)
+    classifier = process_question(question, en_nlp)
 
     df_data_frame = []
     df_data_frame.append(classifier)
