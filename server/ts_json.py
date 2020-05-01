@@ -13,6 +13,12 @@ import sys
 
 
 def json_from_training_set(input_path, output_path):
+    """
+    Converts the .label training data to a json format
+    :param input_path: A path to the .label training data found on https://cogcomp.seas.upenn.edu/Data/QA/QC/
+    :param output_path: A path to the desired location for the .json training data
+    :return: writes to the output_path
+    """
     input_file = open(input_path, 'r')
     output_file = open(output_path, 'w')
     json_arr = []

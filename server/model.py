@@ -2,7 +2,8 @@
 
 """
     model.py:
-        The function of this script is utilize a training set to classify questions
+        The function of this script is utilize a training set to classify questions. It categorizes questions and creates
+        and processes them to be used by classy.py.
 """
 
 __author__ = "Daniel Ayvar"
@@ -14,8 +15,11 @@ import sys
 
 def read_input_file(file_path):
     """
-        Reads an file containing the classified question set and return a list of the questions fields
-        within a dictionary.
+    Reads an file containing the classified question set and return a list of the questions fields
+    within a dictionary.
+
+    :param file_path: file path to the json data model created by ts_json
+    :return: returns a list of question json objects
     """
 
     question_list = []
@@ -33,7 +37,11 @@ def read_input_file(file_path):
 
 def write_output_file(file_path, classifiers):
     """
-        Write classifiers into a output file as json array
+    Write classifiers into a output file as json array
+
+    :param file_path: file path to the output file
+    :param classifiers: a list of the processed questions
+    :return: Writes a json model to the file_path given
     """
     with open(file_path, 'w+') as output_file:
         json.dump(classifiers,output_file, sort_keys=True, indent=4, separators=(',', ': '))
@@ -49,6 +57,14 @@ def clear_output_file(file_path):
 
 
 def process_question(question_obj, en_nlp):
+    """
+    Processes a question by saving the question term ('Who','When','What','How'), saving it's Part of Speech Tag. It also
+    saves it's bigram and the neighbor's part of speech tag.
+
+    :param question_obj: a question from the .json training data set created from ts_json.py
+    :param en_nlp: a language model obtained from spacy
+    :return: returns the required data from the question
+    """
     en_doc = en_nlp(u'' + question_obj["question"])
     sentences = list(en_doc.sents)
     sentence = sentences[0]
