@@ -65,78 +65,51 @@ The script accepts one argument enclosed by quotations
 ```
 sh start_client.sh "Who is Don Cornero?"
 #Prints
-Message sent: { 'question' : 'Who is Don Cornero'}
-Message recieved: { 'class' : 'HUM'} 
+ 
 ```
 
 Alternatively The client can be started by running the python file test_client.py.
 ```
 python test_client.py "Who is Don Cornero?"
+#Output
+Message sent: {'question': 'Who is Don Cornero?'}
+Message recieved: {"c_class": "HUM", "f_class": "ind"}
+
 ```
 
 Classification can be decoded using the [Question Classification Taxonomy](https://cogcomp.seas.upenn.edu/Data/QA/QC/definition.html).
 The attribute "c_class" represents the broader classification of the question, while "f_class" represents the finer category within the coarse classification
 
 
-### Test Cases
+### Test Case
 ```
-    #Input
-    sh start_client.sh "How much does a Macbook Air cost?"
-    #Output
-    Message sent: {'question':'How much does a Macbook Air cost?'}
-    Message recieved: {'class':'NUM'}
+Message sent: {'question': 'How much does a Macbook Air Cost?'}
+Message recieved: {"c_class": "NUM", "f_class": "count"}
 
-    #Input
-    sh start_client.sh "Where can i go for a drink around here?"
-    #Output
-    Message sent: {'question':'Where can i go for a drink around here?'}
-    Message recieved: {'class':'LOC'}
+Message sent: {'question': 'Where can i get a drink of water?'}
+Message recieved: {"c_class": "LOC", "f_class": "other"}
 
-    #Input
-    sh start_client.sh "Who is Don Cornero?"
-    #Output
-    Message sent: {'question':'Who is Don Cornero?'}
-    Message recieved: {'class':'HUM'}
+Message sent: {'question': 'Who is Don Cornero?'}
+Message recieved: {"c_class": "HUM", "f_class": "ind"}
 
-    #Input
-    sh start_client.sh "How are you feeling today?"
-    #Output
-    Message sent: {'question':'How are you feeling today?'}
-    Message recieved: {'class':'DESC'}
-    
-    #Input
-    sh start_client.sh "What does a cake recipe consist of?"
-    #Output
-    Message sent: {'question':'What does a cake recipe consist of?'}
-    Message recieved: {'class':'ENTY'}
+Message sent: {'question': 'How are you feeling today?'}
+Message recieved: {"c_class": "DESC", "f_class": "manner"}
 
-    #Input
-    sh start_client.sh "When does the movie release in theaters?"
-    #Output
-    Message sent: {'question':'When does the movie release in theaters?'}
-    Message recieved: {'class':'NUM'}
+Message sent: {'question': 'What does a cake recipe consist of?'}
+Message recieved: {"c_class": "ENTY", "f_class": "exp"}
 
-    #Input
-    sh start_client.sh "Where is the Sears Tower?"
-    #Output
-    Message sent: {'question':'Where is the Sears Tower?'}
-    Message recieved: {'class':'LOC'}
+Message sent: {'question': 'When does the move release in theaters?'}
+Message recieved: {"c_class": "NUM", "f_class": "date"}
 
-    #Input
-    sh start_client.sh "Who is Iron Man?"
-    #Output
-    Message sent: {'question':'Who is Iron Man?'}
-    Message recieved: {'class':'HUM'}
+Message sent: {'question': 'Where is the Sears Tower?'}
+Message recieved: {"c_class": "LOC", "f_class": "other"}
 
-    #Input
-    sh start_client.sh "What is the powerhouse of the cell?"
-    #Output
-    Message sent: {'question':'What is the powerhouse of the cell?'}
-    Message recieved: {'class':'DESC'}
-    
-    #Input
-    sh start_client.sh "What inspired Micheal Jordan?"
-    #Output
-    Message sent: {'question':'What inspired Micheal Jordan?'}
-    Message recieved: {'class':'ENTY'}
+Message sent: {'question': 'Who is Iron Man?'}
+Message recieved: {"c_class": "HUM", "f_class": "ind"}
+
+Message sent: {'question': 'What is the powerhouse of the cell?'}
+Message recieved: {"c_class": "DESC", "f_class": "def"}
+
+Message sent: {'question': 'What inspired Micheal Jordan?'}
+Message recieved: {"c_class": "ENTY", "f_class": "ind"}
 ```
