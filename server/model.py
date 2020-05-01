@@ -27,7 +27,7 @@ def read_input_file(file_path):
     with open(file_path, 'r') as file:
         for line in file:
             line_arr = line.split()
-            fine_class,coarse_class = line_arr[0].split()
+            fine_class,coarse_class = line_arr[0].split(":")
             question = " ".join(line_arr[1:])
             question_list.append({"question":question,"fine":fine_class,"coarse":coarse_class})
         file.close()

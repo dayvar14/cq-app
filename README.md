@@ -38,7 +38,12 @@ python -m spacy download en_core_web_md
 ```
 
 ### Creating the training model
-This application uses one of many training models pr
+This application uses one of many question training sets provided by the [University of Pennsylvania](https://cogcomp.seas.upenn.edu/Data/QA/QC/)
+Download one of training sets to create a training question model for our application.
+```
+python model.py train_5500.label train_5500.model
+```
+This model is used later as an argument to start the server with main.py
 
 ### Running the application
 To startup server run the sh file 'start_server.sh'
