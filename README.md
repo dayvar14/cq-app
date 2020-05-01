@@ -81,7 +81,8 @@ Classification can be decoded using the [Question Classification Taxonomy](https
 The attribute "c_class" represents the broader classification of the question, while "f_class" represents the finer category within the coarse classification
 
 
-### Test Case
+### Test Cases
+While the server is running, if you run test_client_cases.sh the following output will appear
 ```
 Message sent: {'question': 'How much does a Macbook Air Cost?'}
 Message recieved: {"c_class": "NUM", "f_class": "count"}
