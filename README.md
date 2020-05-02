@@ -67,6 +67,8 @@ The script accepts one argument enclosed by quotations
 ```
 sh start_client.sh "Who is Don Cornero?"
 #Prints
+Message sent: {'question': 'Who is Don Cornero?'}
+Message recieved: {"c_class": "HUM", "f_class": "ind"}
  
 ```
 
